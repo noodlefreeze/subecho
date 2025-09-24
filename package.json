@@ -1,0 +1,47 @@
+{
+  "name": "subecho",
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.17.1",
+  "description": "A browser extension for Youtube that adds subtitle interaction and video loop features.",
+  "author": "noodlefreeze",
+  "license": "MIT",
+  "keywords": [
+    "browser-extension",
+    "youtube",
+    "subtitle",
+    "language-learning"
+  ],
+  "engines": {
+    "node": "^24.8.0"
+  },
+  "scripts": {
+    "dev": "wxt -b firefox",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox",
+    "postinstall": "wxt prepare",
+    "clean": "rm -rf .output && rm -rf .wxt",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "check": "tsc --noEmit",
+    "release:patch": "pnpm version patch && git push && git push --tags",
+    "release:minor": "pnpm version minor && git push && git push --tags",
+    "release:major": "pnpm version major && git push && git push --tags"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^5.4.1",
+    "@tailwindcss/vite": "^4.1.13",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@wxt-dev/module-react": "^1.1.5",
+    "eslint": "^9.36.0",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2",
+    "wxt": "^0.20.11"
+  }
+}

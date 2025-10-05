@@ -1,6 +1,6 @@
-import { createShadowRootUi, defineContentScript } from '#imports'
+import { createShadowRootUi, defineContentScript, injectScript } from '#imports'
 import { waitForElement } from '@/utils/common'
-import { mountElSelector } from '@/utils/const'
+import { mountElSelector, ytPlayerSelector } from '@/utils/const'
 import '~/assets/tailwind.css'
 
 export default defineContentScript({
@@ -8,12 +8,16 @@ export default defineContentScript({
   cssInjectionMode: 'ui',
   async main(ctx) {
     try {
-      const [,] = await Promise.all([waitForElement(mountElSelector)])
+      const [,,] = await Promise.all([waitForElement(mountElSelector), waitForElement(ytPlayerSelector)])
     }
     catch (e) {
       console.error((e as Error).message)
       return
     }
+
+    await injectScript('/main-world.js', {
+      keepInDom: true,
+    })
 
     const ui = await createShadowRootUi(ctx, {
       name: 'subecho-ui',

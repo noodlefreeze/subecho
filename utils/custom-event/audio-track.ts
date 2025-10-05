@@ -19,7 +19,11 @@ function exposeAudioTrackProvider(callback: () => AudioTrack) {
  */
 function requestAudioTrack() {
   return new Promise<AudioTrack>((resolve, reject) => {
+    let timeoutId: number | undefined
+
     function handler(evt: CustomEventInit<{ audioTrack: AudioTrack }>) {
+      clearTimeout(timeoutId)
+
       if (evt.detail) {
         resolve(evt.detail.audioTrack)
       }
@@ -29,7 +33,7 @@ function requestAudioTrack() {
     }
     window.addEventListener(sendEventType, handler, { once: true })
 
-    setTimeout(() => {
+    timeoutId = window.setTimeout(() => {
       window.removeEventListener(sendEventType, handler)
       reject(new Error('Timeout waiting for audio track'))
     }, 10 * 1000)

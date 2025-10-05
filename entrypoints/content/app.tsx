@@ -1,5 +1,6 @@
 import type { ContentScriptContext, WxtWindowEventMap } from '#imports'
 import { useEffect, useState } from 'react'
+import { audioTrackEvents } from '@/utils/custom-event/audio-track'
 
 interface AppProps {
   ctx: ContentScriptContext
@@ -18,6 +19,15 @@ export function App(props: AppProps) {
       window.removeEventListener('wxt:locationchange', onLocationChange)
     }
   }, [])
+
+  useEffect(() => {
+    async function foo() {
+      const audioTrack = await audioTrackEvents.requestAudioTrack()
+      console.log('Audio Track received in isolate world: ', audioTrack)
+    }
+
+    foo()
+  }, [videoId])
 
   return (
     <section>

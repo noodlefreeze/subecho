@@ -3,10 +3,10 @@ export function bcls(parts: Part[]): string {
   return parts.filter(Boolean).join(' ')
 }
 
-export function waitForElement(selector: string, observerOptions = { childList: true }, timeout = 10 * 1000): Promise<Element> {
+export function waitForElement<T extends Element>(selector: string, observerOptions = { childList: true }, timeout = 10 * 1000): Promise<T> {
   return new Promise((resolve, reject) => {
     const observer = new MutationObserver(() => {
-      const el = document.querySelector(selector)
+      const el = document.querySelector<T>(selector)
       if (el) {
         observer.disconnect()
         resolve(el)

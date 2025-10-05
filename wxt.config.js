@@ -3,7 +3,12 @@ import { defineConfig } from 'wxt'
 
 export default defineConfig({
   manifest: {
-    web_accessible_resources: [],
+    web_accessible_resources: [
+      {
+        resources: ['main-world.js'],
+        matches: ['https://www.youtube.com/watch*'],
+      },
+    ],
   },
   modules: ['@wxt-dev/module-react'],
   imports: false,

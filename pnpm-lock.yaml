@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      comctx:
+        specifier: ^1.4.3
+        version: 1.4.3
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -1135,6 +1138,9 @@ packages:
 
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
+
+  comctx@1.4.3:
+    resolution: {integrity: sha512-Z1fisV3l6kucW+GZDg3AI2+ffWGd+Q/RCBKGbpQ8oe6U3p6wmTM/NciP4RRgLYYDW4aZgZIXRUQz1YnFX1QsjQ==}
 
   commander@2.9.0:
     resolution: {integrity: sha512-bmkUukX8wAOjHdN26xj5c4ctEV22TQ7dQYhSmuckKhToXrkUn0iIaolHdIxYYqD55nhpSPA9zPQ1yP57GdXP2A==}
@@ -4205,6 +4211,8 @@ snapshots:
   color-name@1.1.4: {}
 
   colorette@2.0.20: {}
+
+  comctx@1.4.3: {}
 
   commander@2.9.0:
     dependencies:
